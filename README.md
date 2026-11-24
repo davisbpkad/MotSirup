@@ -4,22 +4,23 @@ Dashboard lokal Vue untuk membandingkan target pagu Excel dengan paket SIRUP ter
 
 ## Menjalankan
 
-Persyaratan: Node.js 22 atau lebih baru, Google Chrome, Python 3 dengan `openpyxl` untuk impor Excel.
+Persyaratan menjalankan dashboard: Node.js 22 atau lebih baru dan Google Chrome. Python 3 dengan `openpyxl` hanya diperlukan untuk impor ulang Excel.
 
 ```sh
 npm install --ignore-scripts
-npm run import:pagu
 npm start
 ```
 
 Buka **http://127.0.0.1:8788/**. ActTRK pada port 8787 tidak diubah.
+
+Baseline `data/pagu.json` sudah disertakan; impor Excel tidak wajib setelah clone. Jalankan `npm run import:pagu` hanya jika hendak memperbarui baseline dan workbook `../Rekap SIRUP_Perubahan 2026.xlsx` tersedia. Workbook tidak ikut repository. Clone baru belum memiliki sesi login atau snapshot hasil sinkron.
 
 1. Pilih PPK dan tekan **Hubungkan SIRUP**.
 2. Pada SPSE Jawa Barat, pilih LOGIN → NON PENYEDIA. Credential diisi otomatis jika tersedia pada template lokal; lanjutkan login sendiri sampai membuka SIRUP.
 3. Pilih TA aktif melalui ikon gear **Pengaturan pagu dan TA**, lalu tekan **Sinkronisasi**. Permintaan daftar memakai TA aktif; detail setiap paket wajib memiliki tahun yang sama.
 4. Ulangi untuk PPK lain. Setiap PPK memiliki profil dan hasil sinkron terpisah.
 
-Tutup browser lewat tombol tutup jika tidak diperlukan. Sesi tetap berada dalam profil lokal; saat kedaluwarsa, login ulang di situs SIRUP. Tidak perlu memasukkan kata sandi pada dashboard atau file konfigurasi.
+Tutup browser lewat tombol tutup jika tidak diperlukan. Sesi tetap berada dalam profil lokal; saat kedaluwarsa, login ulang melalui SPSE. Kata sandi tidak dimasukkan ke dashboard atau `settings.json`. Login manual tidak memerlukan file credential; pengisian otomatis memakai `credential.md` privat seperti dijelaskan di bawah.
 
 ## Data dan perhitungan
 
@@ -83,6 +84,8 @@ Kolom Progres kegiatan/subkegiatan memakai donut SVG kecil di samping nilai/stat
 - Ekspor tabel mengikuti filter PPK, pencarian, dan status dropdown saat tombol ditekan. Kegiatan terbuka menampilkan anaknya; subkegiatan terbuka menampilkan paketnya. Dropdown tertutup tetap tertutup, termasuk anak terbuka yang parent-nya ditutup. Semua baris yang sesuai ikut diekspor, termasuk di luar layar, tanpa mengubah tampilan pengguna.
 - PNG progres PPK tetap mencantumkan TA, PPK/filter, waktu ekspor, serta waktu sinkron. PNG tabel sengaja tidak menambahkan metadata di luar tabel, sesuai contoh tampilan. Rendering memakai Chrome headless lokal yang sudah tersedia melalui Playwright; tanpa dependency tambahan, profil login, atau koneksi SIRUP.
 - Batas satu PNG: tinggi 30.000 piksel. Rekap lebih besar ditolak dengan pesan untuk memilih satu PPK atau mempersempit pencarian; tidak dipotong diam-diam.
+
+## Sumber pagu dan aturan hitung
 
 - Target: `../Rekap SIRUP_Perubahan 2026.xlsx`, sheet `PAGU SIRUP 2026_Perubahan`. Workbook hanya dibaca. Impor mencatat SHA256 sumber serta menguji bahwa workbook tidak berubah.
 - Enam PPK, 66 subkegiatan. Nama PPK dan bidang diambil dari pemetaan yang ditinjau terhadap workbook. Satu target Anggaran kosong tetap `null`, bukan nol.
