@@ -1,0 +1,684 @@
+{
+  "year": 2026,
+  "source": "Rekap SIRUP_Perubahan 2026.xlsx",
+  "sourceSha256": "6dbe10f2ac915ec084ff702c1701eee4659ea2f7e1d295d2efe68d22b6cead0c",
+  "unit": "sen",
+  "ppks": [
+    {
+      "id": "siti",
+      "name": "SITI SYAMSINUR, S.E., M.Acc., AAP",
+      "shortName": "Siti Syamsinur",
+      "bidang": "Sekretariat"
+    },
+    {
+      "id": "taufiq",
+      "name": "MUHAMMAD TAUFIQ HIDAYAT, S.P., M.M.",
+      "shortName": "Muhammad Taufiq Hidayat",
+      "bidang": "Perben"
+    },
+    {
+      "id": "dindin",
+      "name": "DINDIN MAHPUDIN, SE., Ak., M.Ak., CA., AAP., ACPA",
+      "shortName": "Dindin Mahpudin",
+      "bidang": "Aklap"
+    },
+    {
+      "id": "andri",
+      "name": "ANDRI PRAMANA, S.STP.",
+      "shortName": "Andri Pramana",
+      "bidang": "Anggaran"
+    },
+    {
+      "id": "novi",
+      "name": "NOVI RAHYANTI,SE., MAcctFin",
+      "shortName": "Novi Rahyanti",
+      "bidang": "BMD"
+    },
+    {
+      "id": "agus",
+      "name": "AGUS JONI LISTIAJDI, ST",
+      "shortName": "Agus Joni Listiajdi",
+      "bidang": "UPTD"
+    }
+  ],
+  "targets": [
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.01.0001",
+      "name": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+      "budget": 70932000,
+      "activityName": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah",
+      "sourceRow": 4
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.01.0007",
+      "name": "Evaluasi Kinerja Perangkat Daerah",
+      "budget": 14248000,
+      "activityName": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah",
+      "sourceRow": 5
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.02.0007",
+      "name": "Koordinasi dan Penyusunan Laporan Keuangan Bulanan/ Triwulanan/Semesteran SKPD",
+      "budget": 546092000,
+      "activityName": "Administrasi Keuangan Perangkat Daerah",
+      "sourceRow": 7
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.05.0009",
+      "name": "Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi",
+      "budget": 5667146000,
+      "activityName": "Administrasi Kepegawaian Perangkat Daerah",
+      "sourceRow": 9
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0001",
+      "name": "Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor",
+      "budget": 0,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 11
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0002",
+      "name": "Penyediaan Peralatan dan Perlengkapan Kantor",
+      "budget": 66055803700,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 12
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0002",
+      "name": "Penyediaan Peralatan dan Perlengkapan Kantor (UPTD)",
+      "budget": 5048434000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 13
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0003",
+      "name": "Penyediaan Peralatan Rumah Tangga",
+      "budget": 15956432060,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 14
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0003",
+      "name": "Penyediaan Peralatan Rumah Tangga (UPTD)",
+      "budget": 4804840000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 15
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0004",
+      "name": "Penyediaan Bahan Logistik Kantor",
+      "budget": 10876272500,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 16
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0005",
+      "name": "Penyediaan Barang Cetakan dan Penggandaan",
+      "budget": 16363045000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 17
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0005",
+      "name": "Penyediaan Barang Cetakan dan Penggandaan (UPTD)",
+      "budget": 500000000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 18
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0008",
+      "name": "Fasilitasi Kunjungan Tamu",
+      "budget": 602500000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 19
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0008",
+      "name": "Fasilitasi Kunjungan Tamu (UPTD)",
+      "budget": 1687200000,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 20
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0009",
+      "name": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+      "budget": 155809921901,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 21
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06.0009",
+      "name": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD (UPTD)",
+      "budget": 31590392135,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 22
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06.0011",
+      "name": "Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD",
+      "budget": 17944352881,
+      "activityName": "Administrasi Umum Perangkat Daerah",
+      "sourceRow": 23
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.07.0002",
+      "name": "Pengadaan Kendaraan Dinas Operasional atau Lapangan",
+      "budget": 0,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 25
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.07.0005",
+      "name": "Pengadaan Mebel",
+      "budget": 0,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 26
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.07.0005",
+      "name": "Pengadaan Mebel (UPTD)",
+      "budget": 14319000000,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 27
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.07.0006",
+      "name": "Pengadaan Peralatan dan Mesin Lainnya",
+      "budget": 38832248000,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 28
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.07.0006",
+      "name": "Pengadaan Peralatan dan Mesin Lainnya",
+      "budget": 8254597000,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 29
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.07.0009",
+      "name": "Pengadaan Gedung Kantor atau Bangunan Lainnya (UPTD)",
+      "budget": 736364453700,
+      "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+      "sourceRow": 30
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.08.0002",
+      "name": "Penyediaan Jasa Komunikasi, Sumber Daya Air dan Listrik",
+      "budget": 256777320000,
+      "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 32
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.08.0003",
+      "name": "Penyediaan Jasa Peralatan dan Perlengkapan Kantor",
+      "budget": 24568070000,
+      "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 33
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.08.0003",
+      "name": "Penyediaan Jasa Peralatan dan Perlengkapan Kantor (UPTD)",
+      "budget": 11528000000,
+      "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 34
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.08.0004",
+      "name": "Penyediaan Jasa Pelayanan Umum Kantor",
+      "budget": 301141592446,
+      "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 35
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.08.0004",
+      "name": "Penyediaan Jasa Pelayanan Umum Kantor (UPTD)",
+      "budget": 4468146083415,
+      "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 36
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.09.0001",
+      "name": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan dan Pajak Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan",
+      "budget": 20565000000,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 38
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.09.0002",
+      "name": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan",
+      "budget": 38305000000,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 39
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.09.0002",
+      "name": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan (UPTD)",
+      "budget": 136410950000,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 40
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.09.0006",
+      "name": "Pemeliharaan Peralatan dan Mesin Lainnya",
+      "budget": 7798246135,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 41
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.09.0006",
+      "name": "Pemeliharaan Peralatan dan Mesin Lainnya (UPTD)",
+      "budget": 62252300000,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 42
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.09.0009",
+      "name": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+      "budget": 0,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 43
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.09.0009",
+      "name": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya (UPTD)",
+      "budget": 41410000000,
+      "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+      "sourceRow": 44
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0001",
+      "name": "Koordinasi dan Penyusunan KUA dan PPAS",
+      "budget": 15189616600,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 47
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0002",
+      "name": "Koordinasi dan Penyusunan Perubahan KUA dan Perubahan PPAS",
+      "budget": 2768385280,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 48
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0003",
+      "name": "Koordinasi, Penyusunan dan Verifikasi RKA-SKPD",
+      "budget": 3881750000,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 49
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0004",
+      "name": "Koordinasi, Penyusunan dan Verifikasi Perubahan RKA-SKPD",
+      "budget": 1340000000,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 50
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0007",
+      "name": "Koordinasi dan Penyusunan Peraturan Daerah tentang APBD dan Peraturan Kepala Daerah tentang Penjabaran APBD",
+      "budget": 31658614900,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 51
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0008",
+      "name": "Koordinasi dan Penyusunan Peraturan Daerah tentang Perubahan APBD dan Peraturan Kepala Daerah tentang Penjabaran Perubahan APBD",
+      "budget": 26211756295,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 52
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0009",
+      "name": "Koordinasi dan Penyusunan Regulasi serta Kebijakan Bidang Anggaran",
+      "budget": 16474490600,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 53
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0011",
+      "name": "Koordinasi Perencanaan Anggaran Belanja Daerah",
+      "budget": 12746720000,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 54
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01.0013",
+      "name": "Pembinaan Perencanaan Penganggaran Daerah Pemerintah Provinsi",
+      "budget": 0,
+      "activityName": "Koordinasi dan Penyusunan Rencana Anggaran Daerah",
+      "sourceRow": 55
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.02.0004",
+      "name": "Evaluasi Rancangan Peraturan Daerah tentang Pertanggungjawaban Pelaksanaan APBD Kabupaten/Kota dan Rancangan Peraturan Kepala Daerah tentang Penjabaran Pertanggungjawaban Pelaksanaan APBD Kabupaten/Kota",
+      "budget": 5316600000,
+      "activityName": "Pembinaan Pengelolaan Keuangan Daerah Kabupaten/Kota",
+      "sourceRow": 57
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.02.0005",
+      "name": "Asistensi Pengelolaan Keuangan Kabupaten/Kota",
+      "budget": null,
+      "activityName": "Pembinaan Pengelolaan Keuangan Daerah Kabupaten/Kota",
+      "sourceRow": 58
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.02.0008",
+      "name": "Konsultasi dan Koordinasi Pembinaan Penyusunan dan Evaluasi Rancangan Peraturan Daerah tentang APBD Kabupaten/Kota dan Rancangan Peraturan Kepala Daerah tentang Penjabaran APBD Kabupaten/Kota",
+      "budget": 13082380000,
+      "activityName": "Pembinaan Pengelolaan Keuangan Daerah Kabupaten/Kota",
+      "sourceRow": 59
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.02.0009",
+      "name": "Konsultasi dan Koordinasi Pembinaan Penyusunan dan Evaluasi Rancangan Peraturan Daerah tentang Perubahan APBD Kabupaten/Kota dan Rancangan Peraturan Kepala Daerah tentang Penjabaran Perubahan APBD Kabupaten/Kota",
+      "budget": 17035674000,
+      "activityName": "Pembinaan Pengelolaan Keuangan Daerah Kabupaten/Kota",
+      "sourceRow": 60
+    },
+    {
+      "ppk": "taufiq",
+      "code": "5.02.02.1.03.0001",
+      "name": "Koordinasi dan Pengelolaan Kas Daerah",
+      "budget": 47224048700,
+      "activityName": "Koordinasi dan Pengelolaan Perbendaharaan Daerah",
+      "sourceRow": 62
+    },
+    {
+      "ppk": "taufiq",
+      "code": "5.02.02.1.03.0006",
+      "name": "Koordinasi, Pelaksanaan Kerja Sama dan Pemantauan Transaksi Non Tunai dengan Lembaga Keuangan Bank dan Lembaga Keuangan Bukan Bank",
+      "budget": 11066280000,
+      "activityName": "Koordinasi dan Pengelolaan Perbendaharaan Daerah",
+      "sourceRow": 63
+    },
+    {
+      "ppk": "taufiq",
+      "code": "5.02.02.1.03.0009",
+      "name": "Rekonsiliasi Data Penerimaan dan Pengeluaran Kas serta Pemungutan dan Pemotongan atas SP2D dengan Instansi Terkait",
+      "budget": 11872475000,
+      "activityName": "Koordinasi dan Pengelolaan Perbendaharaan Daerah",
+      "sourceRow": 64
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04.0002",
+      "name": "Rekonsiliasi dan Verifikasi Aset, Kewajiban, Ekuitas, Pendapatan, Belanja, Pembiayaan, Pendapatan-LO, dan Beban",
+      "budget": 9281924200,
+      "activityName": "Koordinasi dan Pelaksanaan Akuntansi dan Pelaporan Keuangan Daerah",
+      "sourceRow": 66
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04.0003",
+      "name": "Koordinasi Penyusunan Laporan Pertanggungjawaban Pelaksanaan APBD Bulanan, Triwulanan dan Semesteran",
+      "budget": 10715823000,
+      "activityName": "Koordinasi dan Pelaksanaan Akuntansi dan Pelaporan Keuangan Daerah",
+      "sourceRow": 67
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04.0004",
+      "name": "Konsolidasi Laporan Keuangan SKPD, BLUD dan Laporan Keuangan Pemerintah Daerah",
+      "budget": 12626567200,
+      "activityName": "Koordinasi dan Pelaksanaan Akuntansi dan Pelaporan Keuangan Daerah",
+      "sourceRow": 68
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04.0005",
+      "name": "Koordinasi dan Penyusunan Rancangan Peraturan Daerah tentang Pertanggungjawaban Pelaksanaan APBD Provinsi dan Rancangan Peraturan Kepala Daerah tentang Penjabaran Pertanggungjawaban Pelaksanaan APBD Provinsi",
+      "budget": 11463661000,
+      "activityName": "Koordinasi dan Pelaksanaan Akuntansi dan Pelaporan Keuangan Daerah",
+      "sourceRow": 69
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04.0011",
+      "name": "Pembinaan Akuntansi, Pelaporan dan Pertanggungjawaban Pemerintah Provinsi",
+      "budget": 0,
+      "activityName": "Koordinasi dan Pelaksanaan Akuntansi dan Pelaporan Keuangan Daerah",
+      "sourceRow": 70
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0001",
+      "name": "Penyusunan Standar Harga",
+      "budget": 24658764700,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 73
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0003",
+      "name": "Penyusunan Rencana Kebutuhan Barang Milik Daerah",
+      "budget": 16399705500,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 74
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0006",
+      "name": "Inventarisasi Barang Milik Daerah",
+      "budget": 35731000000,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 75
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.03.1.01.0007",
+      "name": "Pengamanan Barang Milik Daerah",
+      "budget": 77353000000,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 76
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.03.1.01.0008",
+      "name": "Penilaian Barang Milik Daerah",
+      "budget": 26847564250,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 77
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0009",
+      "name": "Pengawasan dan Pengendalian Pengelolaan Barang Milik Daerah",
+      "budget": 7268445900,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 78
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0010",
+      "name": "Optimalisasi Penggunaan, Pemanfaatan, Pemindahtanganan, Pemusnahan, dan Penghapusan Barang Milik Daerah",
+      "budget": 30046222100,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 79
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.03.1.01.0010",
+      "name": "Optimalisasi Penggunaan, Pemanfaatan, Pemindahtanganan, Pemusnahan, dan Penghapusan Barang Milik Daerah",
+      "budget": 17464000000,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 80
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0012",
+      "name": "Penyusunan Laporan Barang Milik Daerah",
+      "budget": 28820102800,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 81
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01.0013",
+      "name": "Pembinaan Pengelolaan Barang Milik Daerah Pemerintah Kabupaten/Kota",
+      "budget": 1100000000,
+      "activityName": "Pengelolaan Barang Milik Daerah",
+      "sourceRow": 82
+    }
+  ],
+  "excelComparisons": [
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.01",
+      "budget": 85180000,
+      "input": 85180000
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.02",
+      "budget": 546092000,
+      "input": 546092000
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.05",
+      "budget": 5667146000,
+      "input": 5667146000
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.06",
+      "budget": 283608328042,
+      "input": 283608328100
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.07",
+      "budget": 38832248000,
+      "input": 38832248000
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.08",
+      "budget": 325709662446,
+      "input": 325709662400
+    },
+    {
+      "ppk": "siti",
+      "code": "5.02.01.1.09",
+      "budget": 66668246135,
+      "input": 66668246100
+    },
+    {
+      "ppk": "taufiq",
+      "code": "5.02.02.1.03",
+      "budget": 70162803700,
+      "input": 94768003600
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.02",
+      "budget": 5316600000,
+      "input": 7435850000
+    },
+    {
+      "ppk": "dindin",
+      "code": "5.02.02.1.04",
+      "budget": 44087975400,
+      "input": 55133627000
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.01",
+      "budget": 110271333675,
+      "input": 153615224000
+    },
+    {
+      "ppk": "andri",
+      "code": "5.02.02.1.02",
+      "budget": 30118054000,
+      "input": 50578150000
+    },
+    {
+      "ppk": "novi",
+      "code": "5.02.03.1.01",
+      "budget": 144024241000,
+      "input": 129525868900
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.06",
+      "budget": 43630866135,
+      "input": 59895830000
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.07",
+      "budget": 758938050700,
+      "input": 684217702000
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.08",
+      "budget": 4736451403415,
+      "input": 4832414280400
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.01.1.09",
+      "budget": 240073250000,
+      "input": 301281250000
+    },
+    {
+      "ppk": "agus",
+      "code": "5.02.03.1.01",
+      "budget": 121664564250,
+      "input": 190121408500
+    }
+  ]
+}

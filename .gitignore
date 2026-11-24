@@ -1,0 +1,10 @@
+node_modules/
+data/profiles/
+data/snapshots/
+data/settings.json*
+credential.md
+credential.md.*
+data/*.tmp
+data/*.png
+coverage/
+.DS_Store

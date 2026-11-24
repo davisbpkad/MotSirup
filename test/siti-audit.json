@@ -1,0 +1,1103 @@
+{
+  "baseline": {
+    "year": 2026,
+    "source": "Rekap SIRUP_Perubahan 2026.xlsx",
+    "sourceSha256": "9ecaa742d41072106845e7982ab283151523c429f36d5ccbea624debd5762072",
+    "unit": "sen",
+    "ppks": [
+      {
+        "id": "siti",
+        "name": "SITI SYAMSINUR, S.E., M.Acc., AAP",
+        "shortName": "Siti Syamsinur",
+        "bidang": "Sekretariat"
+      }
+    ],
+    "targets": [
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.01.0001",
+        "name": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+        "budget": 70932000,
+        "activityName": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah",
+        "sourceRow": 4
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.01.0007",
+        "name": "Evaluasi Kinerja Perangkat Daerah",
+        "budget": 14248000,
+        "activityName": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah",
+        "sourceRow": 5
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.02.0007",
+        "name": "Koordinasi dan Penyusunan Laporan Keuangan Bulanan/ Triwulanan/Semesteran SKPD",
+        "budget": 546092000,
+        "activityName": "Administrasi Keuangan Perangkat Daerah",
+        "sourceRow": 7
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.05.0009",
+        "name": "Pendidikan dan Pelatihan Pegawai Berdasarkan Tugas dan Fungsi",
+        "budget": 5667146000,
+        "activityName": "Administrasi Kepegawaian Perangkat Daerah",
+        "sourceRow": 9
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0002",
+        "name": "Penyediaan Peralatan dan Perlengkapan Kantor",
+        "budget": 66055803700,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 12
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0003",
+        "name": "Penyediaan Peralatan Rumah Tangga",
+        "budget": 15956432060,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 14
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0004",
+        "name": "Penyediaan Bahan Logistik Kantor",
+        "budget": 10876272500,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 16
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0005",
+        "name": "Penyediaan Barang Cetakan dan Penggandaan",
+        "budget": 16363045000,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 17
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0008",
+        "name": "Fasilitasi Kunjungan Tamu",
+        "budget": 602500000,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 19
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0009",
+        "name": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+        "budget": 155809921901,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 21
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06.0011",
+        "name": "Dukungan Pelaksanaan Sistem Pemerintahan Berbasis Elektronik pada SKPD",
+        "budget": 17944352881,
+        "activityName": "Administrasi Umum Perangkat Daerah",
+        "sourceRow": 23
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.07.0002",
+        "name": "Pengadaan Kendaraan Dinas Operasional atau Lapangan",
+        "budget": 0,
+        "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "sourceRow": 25
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.07.0005",
+        "name": "Pengadaan Mebel",
+        "budget": 0,
+        "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "sourceRow": 26
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.07.0006",
+        "name": "Pengadaan Peralatan dan Mesin Lainnya",
+        "budget": 38832248000,
+        "activityName": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah",
+        "sourceRow": 28
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.08.0003",
+        "name": "Penyediaan Jasa Peralatan dan Perlengkapan Kantor",
+        "budget": 24568070000,
+        "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 33
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.08.0004",
+        "name": "Penyediaan Jasa Pelayanan Umum Kantor",
+        "budget": 301141592446,
+        "activityName": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 35
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.09.0001",
+        "name": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan dan Pajak Kendaraan Perorangan Dinas atau Kendaraan Dinas Jabatan",
+        "budget": 20565000000,
+        "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 38
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.09.0002",
+        "name": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan",
+        "budget": 38305000000,
+        "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 39
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.09.0006",
+        "name": "Pemeliharaan Peralatan dan Mesin Lainnya",
+        "budget": 7798246135,
+        "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 41
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.09.0009",
+        "name": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+        "budget": 0,
+        "activityName": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah",
+        "sourceRow": 43
+      }
+    ],
+    "excelComparisons": [
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.01",
+        "budget": 85180000,
+        "input": 85180000
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.02",
+        "budget": 546092000,
+        "input": 546092000
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.05",
+        "budget": 5667146000,
+        "input": 5667146000
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.06",
+        "budget": 283608328042,
+        "input": 283608328100
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.07",
+        "budget": 38832248000,
+        "input": 38832248000
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.08",
+        "budget": 325709662446,
+        "input": 325709662400
+      },
+      {
+        "ppk": "siti",
+        "code": "5.02.01.1.09",
+        "budget": 66668246135,
+        "input": 66668246100
+      },
+      {
+        "ppk": "taufiq",
+        "code": "5.02.02.1.03",
+        "budget": 70162803700,
+        "input": 94768003600
+      },
+      {
+        "ppk": "dindin",
+        "code": "5.02.02.1.02",
+        "budget": 5316600000,
+        "input": 7435850000
+      },
+      {
+        "ppk": "dindin",
+        "code": "5.02.02.1.04",
+        "budget": 44087975400,
+        "input": 55133627000
+      },
+      {
+        "ppk": "andri",
+        "code": "5.02.02.1.01",
+        "budget": 110271333675,
+        "input": 153615224000
+      },
+      {
+        "ppk": "andri",
+        "code": "5.02.02.1.02",
+        "budget": 30118054000,
+        "input": 50578150000
+      },
+      {
+        "ppk": "novi",
+        "code": "5.02.03.1.01",
+        "budget": 144024241000,
+        "input": 129525868900
+      },
+      {
+        "ppk": "agus",
+        "code": "5.02.01.1.06",
+        "budget": 43630866135,
+        "input": 59895830000
+      },
+      {
+        "ppk": "agus",
+        "code": "5.02.01.1.07",
+        "budget": 758938050700,
+        "input": 684217702000
+      },
+      {
+        "ppk": "agus",
+        "code": "5.02.01.1.08",
+        "budget": 4736451403415,
+        "input": 4832414280400
+      },
+      {
+        "ppk": "agus",
+        "code": "5.02.01.1.09",
+        "budget": 240073250000,
+        "input": 301281250000
+      },
+      {
+        "ppk": "agus",
+        "code": "5.02.03.1.01",
+        "budget": 121664564250,
+        "input": 190121408500
+      }
+    ]
+  },
+  "snapshot": {
+    "ppk": "siti",
+    "year": 2026,
+    "syncedAt": "2026-11-24T07:38:29.715Z",
+    "source": "Audit historis PA 24 November 2026; fixture uji, bukan hasil sinkron PPK",
+    "scopeVerified": false,
+    "packages": [
+      {
+        "id": "69137601",
+        "type": "penyedia",
+        "name": "Belanja Makanan dan Minuman pada Fasilitas Pelayanan Urusan Pendidikan - Sekretariat",
+        "amount": 643500000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.05.0009.5.1.02.01.001.00055.",
+            "amount": 643500000
+          }
+        ]
+      },
+      {
+        "id": "69139709",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Alat Kantor dan Rumah Tangga-Alat Rumah Tangga-Alat Rumah Tangga Lainnya (Home Use) - Televisi",
+        "amount": 625000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0006.5.1.02.03.002.00123.",
+            "amount": 625000000
+          }
+        ]
+      },
+      {
+        "id": "69139711",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Komputer-Komputer Unit-Komputer Jaringan",
+        "amount": 2553000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0006.5.1.02.03.002.00404.",
+            "amount": 2553000000
+          }
+        ]
+      },
+      {
+        "id": "69137385",
+        "type": "penyedia",
+        "name": "Belanja Jasa Tenaga Kebersihan - Personil",
+        "amount": 64736863200,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.001.00030.",
+            "amount": 64736863200
+          }
+        ]
+      },
+      {
+        "id": "69137382",
+        "type": "penyedia",
+        "name": "Belanja Sewa Kendaraan Bermotor ",
+        "amount": 7200000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.004.00035.",
+            "amount": 7200000000
+          }
+        ]
+      },
+      {
+        "id": "69137390",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Dinas Bermotor Perorangan ",
+        "amount": 19165000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0001.5.1.02.03.002.00035.",
+            "amount": 19165000000
+          }
+        ]
+      },
+      {
+        "id": "69135095",
+        "type": "penyedia",
+        "name": "Belanja Modal Alat Rumah Tangga Lainnya (Home Use) - Televisi",
+        "amount": 3363300000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.07.0006.5.2.02.05.002.00006.",
+            "amount": 3363300000
+          }
+        ]
+      },
+      {
+        "id": "69135109",
+        "type": "penyedia",
+        "name": "Belanja Modal Peralatan Jaringan - Switch Managed POE 48 Port",
+        "amount": 2665000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.07.0006.5.2.02.10.002.00004.",
+            "amount": 2665000000
+          }
+        ]
+      },
+      {
+        "id": "69137501",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor  - Sekretariat",
+        "amount": 81592000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.02.0007.5.1.02.01.001.00024.",
+            "amount": 81592000
+          }
+        ]
+      },
+      {
+        "id": "69139706",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Alat Studio, Komunikasi, dan Pemancar-Alat Studio-Peralatan Studio Video dan Film ",
+        "amount": 1395246100,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0006.5.1.02.03.002.00133.",
+            "amount": 1395246100
+          }
+        ]
+      },
+      {
+        "id": "69139702",
+        "type": "penyedia",
+        "name": "Belanja Sewa Kendaraan Bermotor Angkutan Barang ",
+        "amount": 5588000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0003.5.1.02.02.004.00037.",
+            "amount": 5588000000
+          }
+        ]
+      },
+      {
+        "id": "69137502",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor - Sekretariat",
+        "amount": 70932000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.01.0001.5.1.02.01.001.00024.",
+            "amount": 70932000
+          }
+        ]
+      },
+      {
+        "id": "69130612",
+        "type": "penyedia",
+        "name": "Belanja Peralatan dan Mesin-Alat Kantor dan Rumah Tangga-Alat Rumah Tangga-Alat Rumah Tangga Lainnya (Home Use)",
+        "amount": 1137000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0003.5.1.02.01.004.00123.",
+            "amount": 1137000000
+          }
+        ]
+      },
+      {
+        "id": "69130594",
+        "type": "penyedia",
+        "name": "Belanja Peralatan dan Mesin-Alat Kantor dan Rumah Tangga-Alat Rumah Tangga-Mebel",
+        "amount": 62100100,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0003.5.1.02.01.004.00118.",
+            "amount": 62100100
+          }
+        ]
+      },
+      {
+        "id": "69135034",
+        "type": "penyedia",
+        "name": "Belanja Modal Peralatan Studio Video dan Film ",
+        "amount": 9450000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.07.0006.5.2.02.06.001.00002.",
+            "amount": 9450000000
+          }
+        ]
+      },
+      {
+        "id": "69135016",
+        "type": "penyedia",
+        "name": "Belanja Modal Personal Computer ",
+        "amount": 2953948000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.07.0006.5.2.02.10.001.00002.",
+            "amount": 2953948000
+          }
+        ]
+      },
+      {
+        "id": "69132894",
+        "type": "penyedia",
+        "name": "Belanja Makanan dan Minuman Rapat - Sekretariat",
+        "amount": 20197750000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.01.001.00052.",
+            "amount": 20197750000
+          }
+        ]
+      },
+      {
+        "id": "69132917",
+        "type": "penyedia",
+        "name": "Belanja Sewa Kendaraan Bermotor Penumpang",
+        "amount": 1333800000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.02.004.00036.",
+            "amount": 1333800000
+          }
+        ]
+      },
+      {
+        "id": "69129956",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor ",
+        "amount": 1306000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0005.5.1.02.01.001.00024.",
+            "amount": 1306000000
+          }
+        ]
+      },
+      {
+        "id": "69129983",
+        "type": "penyedia",
+        "name": "Belanja Sewa Aset Tidak Berwujud-Lisensi dan Franchise ",
+        "amount": 17944352900,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0011.5.1.02.02.015.00002.",
+            "amount": 17944352900
+          }
+        ]
+      },
+      {
+        "id": "69129945",
+        "type": "penyedia",
+        "name": "Belanja Natura dan Pakan-Natura - Sekretariat",
+        "amount": 10876272500,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0004.5.1.02.01.001.00043.",
+            "amount": 10876272500
+          }
+        ]
+      },
+      {
+        "id": "69129970",
+        "type": "penyedia",
+        "name": "Belanja Makanan dan Minuman Jamuan Tamu - Sekretariat",
+        "amount": 602500000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0008.5.1.02.01.001.00053.",
+            "amount": 602500000
+          }
+        ]
+      },
+      {
+        "id": "69129933",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat/Bahan untuk Kegiatan Kantor Lainnya ",
+        "amount": 533692000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0003.5.1.02.01.001.00036.",
+            "amount": 533692000
+          }
+        ]
+      },
+      {
+        "id": "69129906",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Perabot Kantor ",
+        "amount": 14223640000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0003.5.1.02.01.001.00030.",
+            "amount": 14223640000
+          }
+        ]
+      },
+      {
+        "id": "69124273",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Benda Pos",
+        "amount": 1503750000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00027.",
+            "amount": 1503750000
+          }
+        ]
+      },
+      {
+        "id": "69124298",
+        "type": "penyedia",
+        "name": "Belanja Bahan-Bahan Lainnya - P3K dan Masker",
+        "amount": 3136840200,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00012.",
+            "amount": 3136840200
+          }
+        ]
+      },
+      {
+        "id": "69124293",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor- Suvenir/Cendera Mata ",
+        "amount": 3860000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00035.",
+            "amount": 3860000000
+          }
+        ]
+      },
+      {
+        "id": "69124296",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor ",
+        "amount": 5797145600,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00024.",
+            "amount": 5797145600
+          }
+        ]
+      },
+      {
+        "id": "69124288",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Perabot Kantor ",
+        "amount": 5669315000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00030.",
+            "amount": 5669315000
+          }
+        ]
+      },
+      {
+        "id": "69124290",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor- Perlengkapan Pendukung Olahraga ",
+        "amount": 1537000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00034.",
+            "amount": 1537000000
+          }
+        ]
+      },
+      {
+        "id": "69124303",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Bahan Komputer ",
+        "amount": 26489008900,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00029.",
+            "amount": 26489008900
+          }
+        ]
+      },
+      {
+        "id": "69035654",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak ",
+        "amount": 9307045000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0005.5.1.02.01.001.00026.",
+            "amount": 9307045000
+          }
+        ]
+      },
+      {
+        "id": "68882953",
+        "type": "penyedia",
+        "name": "Belanja Sewa Bangunan Gedung Tempat Olahraga ",
+        "amount": 5690000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.005.00011.",
+            "amount": 5690000000
+          }
+        ]
+      },
+      {
+        "id": "67595852",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover ",
+        "amount": 5750000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0005.5.1.02.01.001.00025.",
+            "amount": 5750000000
+          }
+        ]
+      },
+      {
+        "id": "67202423",
+        "type": "penyedia",
+        "name": "Belanja Pakaian Olahraga",
+        "amount": 3534000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00076.",
+            "amount": 3534000000
+          }
+        ]
+      },
+      {
+        "id": "66336309",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover ",
+        "amount": 11587440000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00025.",
+            "amount": 11587440000
+          }
+        ]
+      },
+      {
+        "id": "65959153",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Beroda Dua ",
+        "amount": 8900000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0002.5.1.02.03.002.00038.",
+            "amount": 8900000000
+          }
+        ]
+      },
+      {
+        "id": "64026808",
+        "type": "penyedia",
+        "name": "Belanja Sewa Alat Reproduksi (Penggandaan) ",
+        "amount": 13200000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0003.5.1.02.02.004.00115.",
+            "amount": 13200000000
+          }
+        ]
+      },
+      {
+        "id": "64212118",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Komputer-Peralatan Komputer-Peralatan Personal Computer ",
+        "amount": 3225000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0006.5.1.02.03.002.00409.",
+            "amount": 3225000000
+          }
+        ]
+      },
+      {
+        "id": "64083190",
+        "type": "penyedia",
+        "name": "Belanja Modal Alat Komunikasi Telephone ",
+        "amount": 20400000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.07.0006.5.2.02.06.002.00001.",
+            "amount": 20400000000
+          }
+        ]
+      },
+      {
+        "id": "64027037",
+        "type": "penyedia",
+        "name": "Belanja Sewa Tanaman ",
+        "amount": 2520000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0003.5.1.02.02.007.00057.",
+            "amount": 2520000000
+          }
+        ]
+      },
+      {
+        "id": "64209253",
+        "type": "penyedia",
+        "name": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Penumpang ",
+        "amount": 26680000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0002.5.1.02.03.002.00036.",
+            "amount": 26680000000
+          }
+        ]
+      },
+      {
+        "id": "63941539",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor - Sekretariat",
+        "amount": 14248000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.01.0007.5.1.02.01.001.00024.",
+            "amount": 14248000
+          }
+        ]
+      },
+      {
+        "id": "62598745",
+        "type": "penyedia",
+        "name": "Belanja Jasa Tenaga Supir",
+        "amount": 8092107900,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.001.00033.",
+            "amount": 8092107900
+          }
+        ]
+      },
+      {
+        "id": "64003567",
+        "type": "penyedia",
+        "name": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Listrik ",
+        "amount": 2941304000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0002.5.1.02.01.001.00031.",
+            "amount": 2941304000
+          }
+        ]
+      },
+      {
+        "id": "63958369",
+        "type": "penyedia",
+        "name": "Belanja jasa Pegawai Pemerintah dengan Perjanjian Kerja (PPPK) Paruh Waktu pada jabatan tenaga teknis",
+        "amount": 151522493200,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.001.00086.",
+            "amount": 151522493200
+          }
+        ]
+      },
+      {
+        "id": "62597025",
+        "type": "penyedia",
+        "name": "Belanja Jasa Pramubakti dan Front Office BPKAD",
+        "amount": 56644755300,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.001.00028.",
+            "amount": 56644755300
+          }
+        ]
+      },
+      {
+        "id": "64026459",
+        "type": "penyedia",
+        "name": "Belanja Jasa Pembersihan, Pengendalian Hama, dan Fumigasi ",
+        "amount": 3260070000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0003.5.1.02.02.001.00052.",
+            "amount": 3260070000
+          }
+        ]
+      },
+      {
+        "id": "43902515",
+        "type": "swakelola",
+        "name": "Honorarium Penyelenggaraan Kegiatan Pendidikan dan Pelatihan - Sekretariat",
+        "amount": 2730000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.05.0009.5.1.02.02.001.00011.",
+            "amount": 2730000000
+          }
+        ]
+      },
+      {
+        "id": "43902486",
+        "type": "swakelola",
+        "name": "Belanja Kursus Singkat/Pelatihan - Sekretariat",
+        "amount": 188496000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.05.0009.5.1.02.02.012.00001.",
+            "amount": 188496000
+          }
+        ]
+      },
+      {
+        "id": "43902516",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Dalam Kota - Sekretariat",
+        "amount": 52000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.05.0009.5.1.02.04.001.00003.",
+            "amount": 52000000
+          }
+        ]
+      },
+      {
+        "id": "43902437",
+        "type": "swakelola",
+        "name": "Belanja Iuran Jaminan Kesehatan bagi PPPK Paruh Waktu pada Jabatan Tenaga Teknis ",
+        "amount": 5912649600,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.002.00017.",
+            "amount": 5912649600
+          }
+        ]
+      },
+      {
+        "id": "43902491",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Biasa - Sekretariat",
+        "amount": 464500000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.02.0007.5.1.02.04.001.00001.",
+            "amount": 464500000
+          }
+        ]
+      },
+      {
+        "id": "43902487",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Biasa - Sekretariat",
+        "amount": 2053150000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.05.0009.5.1.02.04.001.00001.",
+            "amount": 2053150000
+          }
+        ]
+      },
+      {
+        "id": "43901226",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Dalam Kota - Sekretariat",
+        "amount": 20000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.04.001.00003.",
+            "amount": 20000000
+          }
+        ]
+      },
+      {
+        "id": "43901221",
+        "type": "swakelola",
+        "name": "Honorarium Narasumber atau Pembahas, Moderator, Pembawa Acara, dan Panitia - Sekretariat",
+        "amount": 7230000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.02.001.00003.",
+            "amount": 7230000000
+          }
+        ]
+      },
+      {
+        "id": "43901228",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Paket Meeting Luar Kota - Sekretariat",
+        "amount": 4828200000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.04.001.00005.",
+            "amount": 4828200000
+          }
+        ]
+      },
+      {
+        "id": "43901225",
+        "type": "swakelola",
+        "name": "Belanja Perjalanan Dinas Biasa - Sekretariat",
+        "amount": 122200171900,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.06.0009.5.1.02.04.001.00001.",
+            "amount": 122200171900
+          }
+        ]
+      },
+      {
+        "id": "42259761",
+        "type": "swakelola",
+        "name": "Belanja Pembayaran Pajak, Bea, dan Perizinan ",
+        "amount": 2725000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0002.5.1.02.02.001.00067.",
+            "amount": 2725000000
+          }
+        ]
+      },
+      {
+        "id": "42167060",
+        "type": "swakelola",
+        "name": "Belanja Iuran Jaminan Kecelakaan Kerja bagi PPPK Paruh Waktu pada Jabatan Tenaga Teknis ",
+        "amount": 335680800,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.002.00025.",
+            "amount": 335680800
+          }
+        ]
+      },
+      {
+        "id": "42259325",
+        "type": "swakelola",
+        "name": "Belanja Pembayaran Pajak, Bea, dan Perizinan ",
+        "amount": 1400000000,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.09.0001.5.1.02.02.001.00067.",
+            "amount": 1400000000
+          }
+        ]
+      },
+      {
+        "id": "42281177",
+        "type": "swakelola",
+        "name": "Belanja Iuran Jaminan Kematian bagi PPPK Paruh Waktu pada Jabatan Tenaga Teknis ",
+        "amount": 1007042400,
+        "status": "3",
+        "funding": [
+          {
+            "mak": "5.02.01.1.08.0004.5.1.02.02.002.00033.",
+            "amount": 1007042400
+          }
+        ]
+      }
+    ]
+  }
+}

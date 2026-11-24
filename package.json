@@ -1,0 +1,15 @@
+{
+  "name": "monitor-sirup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test test/selfcheck.js",
+    "import:pagu": "python3 tools/import_pagu.py"
+  },
+  "dependencies": {
+    "chart.js": "4.4.8",
+    "playwright": "1.58.2",
+    "vue": "3.5.46"
+  }
+}
