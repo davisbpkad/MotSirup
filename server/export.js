@@ -11,6 +11,7 @@ async function exportPng(root, view, { section, ppk = '', query = '', opened = [
     const assets = { '/': ['public/index.html','text/html'], '/app.js': ['public/app.js','text/javascript'], '/style.css': ['public/style.css','text/css'], '/vendor/vue.js': ['node_modules/vue/dist/vue.global.prod.js','text/javascript'], '/vendor/chart.js': ['node_modules/chart.js/dist/chart.umd.js','text/javascript'] };
     // Render only local assets and supplied data; exports cannot browse arbitrary URLs or use login profiles.
     assets['/favicon.png'] = ['favicon.png','image/png'];
+    assets['/logo.png'] = ['logo.png','image/png'];
     await page.route('**/*', route => {
       const url = new URL(route.request().url());
       if (url.origin !== 'http://dashboard.local') return route.abort();

@@ -67,7 +67,7 @@ Workbook dan `data/pagu.json` sumber tidak ditulis oleh pengaturan. Setelah peng
 
 Tombol tambah memakai ikon plus; hapus memakai ikon tempat sampah. Nama tindakan tampil saat hover/fokus keyboard dan tersedia bagi pembaca layar. Konfirmasi hapus dan larangan menghapus parent beranak tetap berlaku.
 
-Kontrol akun PPK, Hubungkan SIRUP, Sinkronisasi, TA, dan gear berada di header. Pada layar kecil, kontrol akun pindah ke baris berikut agar tidak berdesakan. Logo header dan ikon tab memakai file asli `favicon.png` di root proyek, tanpa mengubah gambar sumber. Footer hanya menampilkan nama aplikasi dan instansi di tengah.
+Kontrol akun PPK, Hubungkan SIRUP, Sinkronisasi, TA, dan gear berada di header. Pada layar kecil, kontrol akun pindah ke baris berikut agar tidak berdesakan. Ikon tab memakai file asli `favicon.png`. Logo header memakai `logo.png`, hasil ekstraksi tulisan berwarna dari favicon tanpa kotak putih, dengan latar transparan. Proporsi gambar dipertahankan pada lebar 80 px di desktop dan 68 px di mobile; tidak ada teks merek tambahan di sampingnya. Gambar favicon sumber tidak diubah. Footer hanya menampilkan nama aplikasi dan instansi di tengah.
 
 Grafik Status subkegiatan menghitung subkegiatan aktif menurut filter PPK, bukan pencarian tabel. Angka tengah menunjukkan jumlah seluruh subkegiatan aktif. Legenda memisahkan sesuai, kurang, lebih, pagu belum diisi, belum sinkron, input tanpa alokasi, serta pagu/input nol; masing-masing memiliki arti dan jumlah. Ringkasan di bawah grafik menjelaskan selisih dan data yang perlu dilengkapi, bukan menyatakan hasil audit.
 

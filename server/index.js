@@ -27,6 +27,7 @@ const assets = {
   '/app.js': ['public/app.js', 'text/javascript; charset=utf-8'],
   '/style.css': ['public/style.css', 'text/css; charset=utf-8'],
   '/favicon.png': ['favicon.png', 'image/png'],
+  '/logo.png': ['logo.png', 'image/png'],
   '/vendor/vue.js': ['node_modules/vue/dist/vue.global.prod.js', 'text/javascript; charset=utf-8'],
   '/vendor/chart.js': ['node_modules/chart.js/dist/chart.umd.js', 'text/javascript; charset=utf-8']
 };

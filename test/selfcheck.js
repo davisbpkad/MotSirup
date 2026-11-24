@@ -394,7 +394,8 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     if (req.url === '/api/detail') { res.setHeader('Content-Type','application/json'); if (detailFailure) { res.statusCode=400;return res.end(JSON.stringify({error:'SIRUP tidak tersedia'})); } return res.end(JSON.stringify({ id:'123', name:'Paket asli', fields:[{label:'Uraian Pekerjaan',text:'Uraian asli SIRUP <img src=x onerror="window.popupInjected=true">',table:null}], fetchedAt:'2026-11-24T12:00:00Z' })); }
     if (req.method === 'POST') { res.writeHead(400, { 'Content-Type': 'application/json' }); return res.end(JSON.stringify({ error: 'Nama akun tidak cocok dengan PPK yang dipilih.' })); }
     const file = assets[req.url];
-    if(req.url==='/favicon.png'){res.setHeader('Content-Type','image/png');return fs.createReadStream(path.join(root,'favicon.png')).pipe(res);}
+    if(req.url.split('?')[0]==='/favicon.png'){res.setHeader('Content-Type','image/png');return fs.createReadStream(path.join(root,'favicon.png')).pipe(res);}
+    if(req.url==='/logo.png'){res.setHeader('Content-Type','image/png');return fs.createReadStream(path.join(root,'logo.png')).pipe(res);}
     if (!file) { res.writeHead(404); return res.end(); }
     res.setHeader('Content-Type', file.endsWith('.js') ? 'text/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html');
     fs.createReadStream(path.join(root, file)).pipe(res);
@@ -409,6 +410,10 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     await page.waitForSelector('.ppk-card');
     assert.equal(await page.locator('.ppk-card').count(), 6);
     assert.equal(await page.locator('canvas').count(), 2);
+    assert.equal(await page.locator('.brand img').evaluate(el=>getComputedStyle(el).width),'80px');
+    assert.equal(await page.locator('.brand').innerText(),'');
+    assert.equal(await page.locator('.charts + .coverage').count(),1,'coverage follows both monitoring charts');
+    assert.equal(await page.locator('.coverage + .ppk-section').count(),1,'coverage precedes PPK cards');
     assert.equal(await page.locator('.welcome').count(),0);
     assert.equal(await page.locator('.topbar #sync-ppk').count(),1);
     assert.equal(await page.locator('.topbar').getByRole('button',{name:'Hubungkan SIRUP',exact:true}).count(),1);
@@ -662,9 +667,22 @@ test('settings UI persists annual targets and exports both PNG sections on an is
     const page = await browser.newPage({acceptDownloads:true,reducedMotion:'reduce'});
     const errors=[]; page.on('pageerror',e=>errors.push(e.message));
     await page.goto(origin);
-    assert.equal(await page.locator('link[rel=icon]').getAttribute('href'),'/favicon.png');
-    assert.equal(await page.locator('.brand img').getAttribute('src'),'/favicon.png');
+    assert.equal(await page.locator('link[rel=icon]').getAttribute('href'),'/favicon.png?v=09301b7f');
+    assert.equal(await page.locator('.brand img').getAttribute('src'),'/logo.png');
     assert.equal(await page.locator('.brand img').evaluate(el=>el.complete&&el.naturalWidth>0),true);
+    const cornerAlpha=await page.locator('.brand img').evaluate(img=>{
+      const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);
+      return [[0,0],[canvas.width-1,0],[0,canvas.height-1],[canvas.width-1,canvas.height-1]].map(([x,y])=>ctx.getImageData(x,y,1,1).data[3]);
+    });
+    assert.deepEqual(cornerAlpha,[0,0,0,0],'favicon corners remain transparent');
+    const whiteBackground=await page.locator('.brand img').evaluate(img=>{
+      const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+      const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+      let white=0,colored=0;for(let i=0;i<pixels.length;i+=4){if(pixels[i+3]===0)continue;colored++;if(Math.min(pixels[i],pixels[i+1],pixels[i+2])>220)white++;}
+      return {white,colored};
+    });
+    assert.equal(whiteBackground.white,0,'header logo has no white tile');assert.ok(whiteBackground.colored>0);
     await page.getByRole('button',{name:'Pengaturan pagu dan TA'}).click({timeout:2000});
     const settings = page.getByRole('dialog',{name:'Konfigurasi TA & pagu'});
     await settings.waitFor();
