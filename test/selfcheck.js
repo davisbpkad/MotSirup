@@ -410,8 +410,28 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     await page.waitForSelector('.ppk-card');
     assert.equal(await page.locator('.ppk-card').count(), 6);
     assert.equal(await page.locator('canvas').count(), 2);
+    const checkProgressAlignment=async()=>{
+      const cells=await page.locator('.tree-row .row-progress').evaluateAll(nodes=>nodes.map(cell=>{
+        const donut=cell.querySelector('svg').getBoundingClientRect(),box=cell.getBoundingClientRect();
+        const label=cell.querySelector('.progress-label, .badge').getBoundingClientRect();
+        return {right:donut.right,offset:box.right-donut.right,gap:donut.left-label.right,family:getComputedStyle(cell.parentElement.children[1]).fontFamily};
+      }));
+      assert.ok(cells.length>1);
+      for(const cell of cells){
+        assert.ok(Math.abs(cell.offset)<1,'donut stays at fixed right edge of progress column');
+        assert.ok(Math.abs(cell.right-cells[0].right)<1,'donuts align across parent and child rows');
+        assert.ok(Math.abs(cell.gap-8)<1,'donut sits 8px to right of percentage label');
+        assert.equal(cell.family,'Inter, "Segoe UI", system-ui, sans-serif');
+      }
+    };
+    await checkProgressAlignment();
+    for(const selector of ['body','h2','button','input','select','.metric strong','.donut-center strong','.ppk-progress strong','code']) {
+      assert.match(await page.locator(selector).first().evaluate(el=>getComputedStyle(el).fontFamily),/^Inter, "Segoe UI", system-ui, sans-serif$/);
+    }
+    assert.equal(await page.evaluate(()=>Chart.defaults.font.family),await page.locator('body').evaluate(el=>getComputedStyle(el).fontFamily));
     assert.equal(await page.locator('.brand img').evaluate(el=>getComputedStyle(el).width),'80px');
-    assert.equal(await page.locator('.brand').innerText(),'');
+    assert.match(await page.locator('.brand').innerText(),/MonitorSIRUP/);
+    assert.match(await page.locator('.brand').innerText(),/BPKAD PROVINSI JAWA BARAT/);
     assert.equal(await page.locator('.charts + .coverage').count(),1,'coverage follows both monitoring charts');
     assert.equal(await page.locator('.coverage + .ppk-section').count(),1,'coverage precedes PPK cards');
     assert.equal(await page.locator('.welcome').count(),0);
@@ -446,6 +466,7 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     await page.locator('.activity-row').filter({ hasText: '5.02.01.1.06' }).click();
     await page.locator('.sub-row').filter({ hasText: '5.02.01.1.06.0002' }).click();
     assert.equal(await page.locator('.sub-row .progress-donut').count(),await page.locator('.sub-row').count());
+    await checkProgressAlignment();
     assert.equal(await page.locator('.package-row').count(), 10);
     const trigger = page.locator('.package-row button').first();
     const dialog = page.getByRole('dialog', { name: 'Detail paket SIRUP' });
@@ -495,6 +516,7 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
       await page.setViewportSize({ width, height: 900 });
       await page.waitForFunction(() => document.documentElement.scrollWidth <= innerWidth, { timeout: 5000 });
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'no page overflow at ' + width);
+      await checkProgressAlignment();
       if(width===1440) {
         const row=await page.locator('.topbar').evaluate(el=>[...el.querySelectorAll('#sync-ppk,button,.year')].map(n=>{const r=n.getBoundingClientRect();return r.y+r.height/2}));
         assert.ok(Math.max(...row)-Math.min(...row)<2,'desktop controls share one row');

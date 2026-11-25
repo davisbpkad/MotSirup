@@ -242,6 +242,7 @@ createApp({
     async function renderCharts() {
       await nextTick();
       if (!data.value) return;
+      Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const common = { responsive: true, maintainAspectRatio: false, animation: reduced ? false : { duration: 500 }, plugins: { legend: { labels: { boxWidth: 10, usePointStyle: true, font: { size: 11 } } } } };
       const ps = data.value.ppks;

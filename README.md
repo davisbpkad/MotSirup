@@ -28,6 +28,8 @@ Klik nama paket pada rincian atau **Lihat detail paket** pada panel pemeriksaan 
 
 Styling dan transisi mengikuti dialog ActTRK: backdrop hijau dan animasi fade/scale/geser. Tutup melalui tombol **Tutup**, **Escape**, atau klik di luar kotak. Klik di dalam tidak menutup dialog; fokus keyboard tetap di dialog dan kembali ke pemicu setelah ditutup. Reduced motion menonaktifkan animasi.
 
+Font mengikuti susunan referensi SIPD AKLAP: `Inter, "Segoe UI", system-ui, sans-serif`. Tidak ada font eksternal diunduh; jika Inter tidak terpasang, browser memakai Segoe UI atau font sistem. Ukuran teks dan tata letak dashboard tetap dipertahankan.
+
 Popup mengambil **detail publik asli SIRUP** melalui GET ketika dibuka: uraian, spesifikasi, metode, lokasi, PDN/UMK, seluruh tabel pendanaan dan jadwal yang tersedia. Nilai dirender sebagai teks/tabel, bukan HTML target. ID dan TA wajib cocok; gagal mengambil detail menghasilkan pesan error dan tombol coba lagi, tanpa fallback ringkasan duplikat. Detail live tidak mengubah total rekap sebelum sinkron ulang. Tautan **Buka di SIRUP** tetap tersedia.
 
 ## Konfigurasi tahunan
@@ -67,7 +69,7 @@ Workbook dan `data/pagu.json` sumber tidak ditulis oleh pengaturan. Setelah peng
 
 Tombol tambah memakai ikon plus; hapus memakai ikon tempat sampah. Nama tindakan tampil saat hover/fokus keyboard dan tersedia bagi pembaca layar. Konfirmasi hapus dan larangan menghapus parent beranak tetap berlaku.
 
-Kontrol akun PPK, Hubungkan SIRUP, Sinkronisasi, TA, dan gear berada di header. Pada layar kecil, kontrol akun pindah ke baris berikut agar tidak berdesakan. Ikon tab memakai file asli `favicon.png`. Logo header memakai `logo.png`, hasil ekstraksi tulisan berwarna dari favicon tanpa kotak putih, dengan latar transparan. Proporsi gambar dipertahankan pada lebar 80 px di desktop dan 68 px di mobile; tidak ada teks merek tambahan di sampingnya. Gambar favicon sumber tidak diubah. Footer hanya menampilkan nama aplikasi dan instansi di tengah.
+Kontrol akun PPK, Hubungkan SIRUP, Sinkronisasi, TA, dan gear berada di header. Pada layar kecil, kontrol akun pindah ke baris berikut agar tidak berdesakan. Ikon tab memakai file asli `favicon.png`. Logo header memakai `logo.png`, hasil ekstraksi tulisan berwarna dari favicon tanpa kotak putih, dengan latar transparan. Proporsi gambar dipertahankan pada lebar 80 px di desktop dan 68 px di mobile, didampingi tulisan Monitor SIRUP serta BPKAD PROVINSI JAWA BARAT. Gambar favicon sumber tidak diubah. Footer hanya menampilkan nama aplikasi dan instansi di tengah.
 
 Grafik Status subkegiatan menghitung subkegiatan aktif menurut filter PPK, bukan pencarian tabel. Angka tengah menunjukkan jumlah seluruh subkegiatan aktif. Legenda memisahkan sesuai, kurang, lebih, pagu belum diisi, belum sinkron, input tanpa alokasi, serta pagu/input nol; masing-masing memiliki arti dan jumlah. Ringkasan di bawah grafik menjelaskan selisih dan data yang perlu dilengkapi, bukan menyatakan hasil audit.
 
