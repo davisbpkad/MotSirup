@@ -14,7 +14,8 @@ const ProgressDonut = {
 createApp({
   components: { IconButton, ProgressDonut },
   setup() {
-    const data = ref(null), selectedPpk = ref('siti'), filterPpk = ref(''), query = ref('');
+    const data = ref(null), selectedPpk = ref('siti'), filterPpk = ref(''), filterStatus = ref(''), query = ref('');
+    const syncing = ref(false);
     const loadError = ref(''), message = ref(null), connecting = ref(false), opened = ref(new Set());
     const packageDialog = ref(null), packageDetail = ref(null);
     const detailLoading = ref(false), liveDetail = ref(null), detailError = ref('');
@@ -44,11 +45,12 @@ createApp({
     const chosenPpk = computed(() => data.value?.ppks.find(p => p.id === filterPpk.value));
     const visiblePpks = computed(() => chosenPpk.value ? [chosenPpk.value] : data.value?.ppks || []);
     const currentJob = computed(() => Object.values(data.value?.jobs || {}).find(j => j.running));
-    const busy = computed(() => !!currentJob.value);
+    const busy = computed(() => syncing.value || !!currentJob.value);
     const missingTargets = computed(() => data.value?.ppks.flatMap(p => p.activities.flatMap(a => a.subactivities)).filter(s => s.budget === null).length || 0);
     const activities = computed(() => {
       const q = query.value.trim().toLocaleLowerCase('id-ID');
-      return visiblePpks.value.flatMap(ppk => ppk.activities.map(activity => ({ ppk, activity, key: ppk.id + ':' + activity.code })))
+      return visiblePpks.value.flatMap(ppk => ppk.activities.map(activity => ({ ppk, activity: filterStatus.value ? {...activity,subactivities:activity.subactivities.filter(s => s.state === filterStatus.value)} : activity, key: ppk.id + ':' + activity.code })))
+        .filter(e => !filterStatus.value || e.activity.subactivities.length)
         .filter(e => !q || JSON.stringify([e.ppk.shortName, e.activity]).toLocaleLowerCase('id-ID').includes(q));
     });
     const statusCounts = computed(() => {
@@ -165,7 +167,7 @@ createApp({
     async function exportSection(section) {
       exporting.value = true;
       try {
-        const response = await postJson('export',{section,ppk:filterPpk.value,query:section==='rekap'?query.value:'',opened:section==='rekap'?[...opened.value]:[],year:data.value.year,revision:data.value.settingsRevision});
+        const response = await postJson('export',{section,ppk:filterPpk.value,status:section==='rekap'?filterStatus.value:'',query:section==='rekap'?query.value:'',opened:section==='rekap'?[...opened.value]:[],year:data.value.year,revision:data.value.settingsRevision});
         if (!response.ok) throw Error((await response.json()).error || 'Ekspor gagal.');
         const url = URL.createObjectURL(await response.blob());
         const link = document.createElement('a'); link.href = url; link.download = `sirup-${data.value.year}-${section}-${filterPpk.value || 'semua'}.png`;
@@ -209,7 +211,8 @@ createApp({
         }
         data.value = body;
         loadError.value = '';
-      } catch (error) { loadError.value = error.message; }
+        return true;
+      } catch (error) { loadError.value = error.message; return false; }
     }
     async function action(name) {
       const response = await postJson(name + '/' + selectedPpk.value, { year:data.value.year });
@@ -223,17 +226,27 @@ createApp({
       finally { connecting.value = false; }
     }
     async function sync() {
-      try { await action('sync'); await load(); poll(); } catch (error) { notify(error.message, 'error'); }
+      if (busy.value) return;
+      const ppk = selectedPpk.value;
+      syncing.value = true; clearTimeout(toastTimer); message.value = null;
+      try { const job = await action('sync'); data.value.jobs[ppk] = job; poll(ppk); }
+      catch (error) { syncing.value = false; notify(error.message, 'error'); }
     }
-    function poll() {
+    function poll(ppk) {
       clearTimeout(timer);
       timer = setTimeout(async () => {
-        await load();
-        if (busy.value) return poll();
-        const failed = Object.values(data.value?.jobs || {}).find(j => j.error);
-        if (failed) notify(failed.error, 'error'); else notify('Sinkronisasi selesai. Rekap diperbarui dari sesi PPK.');
+        const loaded = await load();
+        const job = loaded && data.value.jobs[ppk];
+        if (job?.running) return poll(ppk);
+        syncing.value = false;
+        if (!job) return notify('Hasil sinkronisasi belum dapat dikonfirmasi. Muat ulang dashboard untuk memeriksa status.', 'error');
+        if (job.error) return notify(job.error, 'error');
+        if (job.phase !== 'Selesai') return notify('Hasil sinkronisasi belum dapat dikonfirmasi. Periksa status sebelum mengulang.', 'error');
+        const name = data.value.ppks.find(p => p.id === ppk)?.shortName || ppk;
+        notify(`Sinkronisasi ${name} berhasil. Rekap diperbarui dari sesi PPK.`, 'success');
       }, 1400);
     }
+    function selectStatus(status) { filterStatus.value = filterStatus.value === status ? '' : status; }
     function draw(id, configuration) {
       charts.get(id)?.destroy();
       const canvas = document.getElementById(id);
@@ -249,14 +262,15 @@ createApp({
       draw('ppk-chart', { type: 'bar', data: { labels: ps.map(p => p.bidang), datasets: [
         { label: 'Target pagu aktif', data: ps.map(p => p.budget / 100000000), backgroundColor: '#d5e8dd', borderRadius: 4 },
         { label: 'Input terumumkan', data: ps.map(p => p.input === null ? null : p.input / 100000000), backgroundColor: '#08754c', borderRadius: 4 }
-      ] }, options: { ...common, scales: { x: { grid: { display: false } }, y: { beginAtZero: true, ticks: { callback: v => Number(v).toLocaleString('id-ID') }, grid: { color: '#edf2ef' } } } } });
-      draw('status-chart', { type: 'doughnut', data: { labels: legend.map(s => s.label), datasets: [{ data: legend.map(s => statusCounts.value[s.key]), backgroundColor: legend.map(s => s.color), borderWidth: 3, borderColor: '#fff', hoverOffset: 3 }] }, options: { ...common, cutout: '78%', plugins: { legend: { display: false } } } });
+      ] }, options: { ...common, onClick: (_event,elements) => { if (elements.length) { const id = ps[elements[0].index].id; filterPpk.value = filterPpk.value === id ? '' : id; } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true, ticks: { callback: v => Number(v).toLocaleString('id-ID') }, grid: { color: '#edf2ef' } } } } });
+      draw('status-chart', { type: 'doughnut', data: { labels: legend.map(s => s.label), datasets: [{ data: legend.map(s => statusCounts.value[s.key]), backgroundColor: legend.map(s => s.color), borderWidth: 3, borderColor: '#fff', hoverOffset: 3 }] }, options: { ...common, onClick: (_event,elements) => { if (elements.length) selectStatus(legend[elements[0].index].key); }, cutout: '78%', plugins: { legend: { display: false } } } });
     }
     watch([filterPpk, query], renderCharts);
+    watch([filterStatus,filterPpk,query,activities], () => { if (filterStatus.value) opened.value = new Set([...opened.value,...activities.value.map(e => e.key)]); });
     watch(() => [data.value?.year,data.value?.settingsRevision,data.value?.ppks.map(p => p.syncedAt).join('|')].join(':'), renderCharts);
-    onMounted(async () => { await load(); await renderCharts(); if (busy.value) poll(); });
+    onMounted(async () => { await load(); await renderCharts(); const running = Object.entries(data.value?.jobs || {}).find(([,job]) => job.running); if (running) poll(running[0]); });
     onBeforeUnmount(() => { clearTimeout(timer); clearTimeout(toastTimer); for (const chart of charts.values()) chart.destroy(); });
-    return { data, selectedPpk, filterPpk, query, loadError, message, connecting, currentJob, busy, chosenPpk, missingTargets, activities, attention, statusCounts, statusTotal, statusInsight, legend,
+    return { data, selectedPpk, filterPpk, filterStatus, selectStatus, query, loadError, message, connecting, currentJob, busy, chosenPpk, missingTargets, activities, attention, statusCounts, statusTotal, statusInsight, legend,
       deleteDialog,pendingDeletion,confirmDelete,
       packageDialog, packageDetail, showPackage, closePackage, dialogPointerDown, dialogClick,
       detailLoading,liveDetail,detailError,settingsDialog,settings,settingsError,savingSettings,settingsPpk,newYear,draftYear,settingsActivities,

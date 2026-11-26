@@ -2,9 +2,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('playwright');
 
-async function exportPng(root, view, { section, ppk = '', query = '', opened = [] }) {
+async function exportPng(root, view, { section, ppk = '', status = '', query = '', opened = [] }) {
   if (!['ppk','rekap'].includes(section) || typeof query !== 'string' || query.length > 200 || (ppk && !view.ppks.some(p => p.id === ppk))) throw Error('Pilihan ekspor tidak valid.');
   if (!Array.isArray(opened) || opened.length > 4000 || opened.some(key => typeof key !== 'string' || key.length > 200)) throw Error('Status dropdown ekspor tidak valid.');
+  if (!['','sesuai','kurang','lebih','target-kosong','belum-sinkron','tanpa-alokasi','nihil'].includes(status)) throw Error('Filter status ekspor tidak valid.');
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce', deviceScaleFactor: 1 });
@@ -24,12 +25,14 @@ async function exportPng(root, view, { section, ppk = '', query = '', opened = [
     await page.locator('#filter-ppk').selectOption(ppk);
     await page.locator('#search').fill(query);
     if (section === 'rekap') {
+      await page.locator('#filter-status').selectOption(status);
       const expanded = new Set(opened);
       for (const selector of ['.activity-row','.sub-row']) {
         for (const row of await page.locator(selector).all()) {
-          if (expanded.has(await row.getAttribute('data-open-key'))) await row.click();
+          if (expanded.has(await row.getAttribute('data-open-key')) !== (await row.getAttribute('aria-expanded') === 'true')) await row.click();
         }
       }
+      await page.waitForFunction(() => !document.querySelector('.expand-enter-active,.expand-leave-active'));
     }
     const target = page.locator(section === 'ppk' ? '.ppk-section' : '.details-section .table-scroll');
     await page.addStyleTag({ content: '.export-controls,.filters{display:none!important}.table-scroll{overflow:visible}.ppk-section,.details-section{background:#fff;padding:22px;border-radius:10px}.export-caption{font-size:12px;color:#596d63;margin-bottom:18px}.ppk-card{animation:none!important}' });

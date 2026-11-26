@@ -1,0 +1,8 @@
+# Keep operational data and login material out of every graph build.
+data/
+credential*.md*
+node_modules/
+.git/
+coverage/
+*.png
+test/*.json

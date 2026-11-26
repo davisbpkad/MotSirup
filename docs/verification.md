@@ -1,5 +1,18 @@
 # Bukti implementasi dan verifikasi
 
+## Toast sinkronisasi dan filter grafik — 25 November 2026
+
+- Akar masalah toast: polling memilih error dari seluruh job, termasuk error lama PPK lain. Polling sekarang mengikuti PPK yang memulai sinkronisasi; sukses hanya tampil setelah pembacaan data terbaru berhasil dan job berfase `Selesai` tanpa error. Hasil yang tidak terbaca atau job yang hilang tidak dianggap sukses.
+- Grafik status dan tombol legenda memfilter anak subkegiatan. Parent terkait terbuka otomatis; filter PPK dan pencarian tetap beririsan. Dropdown status dan tombol hapus menyediakan alternatif keyboard. Klik ulang kategori melepas filter; klik batang memilih/melepas PPK.
+- Grafik status tetap merangkum seluruh anak PPK terpilih, bukan hasil pencarian/status tabel. Nominal parent tetap total seluruh anak, dijelaskan pada UI. Tidak ada perubahan rumus pagu, snapshot, atau paket SIRUP.
+- Ekspor PNG tabel mengirim dan memvalidasi filter status, mempertahankan parent/anak yang ditutup atau dibuka, serta menunggu transisi selesai sebelum mengambil gambar.
+- RED awal: tes Vue gagal menemukan tombol legenda dan tes toast gagal menemukan konfirmasi berhasil. GREEN: 25 tes lulus; coverage server 92,40% baris, 92,33% cabang, 88,10% fungsi. JavaScript browser diuji lewat E2E, bukan coverage Node.
+- Smoke read-only pada `http://127.0.0.1:8788/`: 375/768/1440 piksel, kategori `target-kosong` menampilkan tepat satu anak, tanpa overflow halaman atau page error. Screenshot lokal sementara `sirup-filter-375.png`, `sirup-filter-768.png`, `sirup-filter-1440.png`; tidak masuk Git. Sebelum/sesudah restart: TA 2026, 216 paket, input 7.025.856.044.900 sen, revisi 0.
+- Tes tambahan menangkap penutupan parent saat filter aktif: DOM transisi masih berisi anak sebelum screenshot. Ekspor sekarang menunggu elemen transisi hilang. Tes UI dibatasi timeout 5 detik dan menutup koneksi fixture agar kegagalan tidak menggantung suite.
+- Batas: sinkronisasi nyata tidak dijalankan ulang; sukses/gagal diuji dengan fixture tanpa menulis data privat. Chrome saja; audit axe, Core Web Vitals, dan regresi pixel berbasis baseline tidak dijalankan. Proyek tidak menyediakan build, TypeScript, atau lint script terpisah. Tidak ada commit/push.
+
+Evaluasi mandiri: akurasi **4/5** (regresi dan smoke lulus, sinkron nyata belum diulang); kelengkapan **4/5** (toast, grafik, keyboard, dan ekspor tercakup; lintas browser belum diuji); kejelasan **4/5** (filter aktif dan total parent dijelaskan, kenyamanan perlu penilaian pengguna); dapat digunakan **4/5** (tersedia lokal, perlu refresh tab lama); ringkas **4/5** (tanpa dependensi baru, perubahan terbatas pada UI/ekspor/tes). Rata-rata **4,0/5**. Peningkatan berikutnya: amati toast pada sinkronisasi normal pengguna, lalu uji Safari/Firefox jika diperlukan.
+
 ## Lingkup
 
 Sumber: `Plan.md`, dengan perubahan yang disetujui dalam percakapan: Playwright berprofil persisten per PPK, bukan dekripsi cookie atau ekstensi. Identitas akun menjadi dasar pemilik, MAK hanya dasar pengelompokan dengan peringatan.

@@ -8,3 +8,5 @@ data/*.tmp
 data/*.png
 coverage/
 .DS_Store
+graphify-out/
+.graphify_cache/

@@ -403,6 +403,7 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   const browser = await chromium.launch({ channel: 'chrome', headless: true });
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
+  page.setDefaultTimeout(5000);
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   try {
@@ -548,8 +549,9 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     await page.waitForFunction(() => !document.querySelector('#package-detail').open);
     assert.ok(await page.locator('#package-detail').evaluate(el=>el.getAnimations().length>0),'dialog animates on close');
     const states=['sesuai','kurang','lebih','target-kosong','belum-sinkron','tanpa-alokasi','nihil'];
+    await page.emulateMedia({reducedMotion:'reduce'});
     view.ppks=view.ppks.slice(0,1);
-    view.ppks[0].activities=[{...view.ppks[0].activities[0],subactivities:states.map(state=>({state,budget:state==='target-kosong'?null:100,input:0,packages:[]}))}];
+    view.ppks[0].activities=[{...view.ppks[0].activities[0],subactivities:states.map((state,i)=>({state,code:code+i,name:'Sub '+state,budget:state==='target-kosong'?null:100,input:0,packages:[]}))}];
     await page.reload();await page.waitForSelector('.status-legend');
     assert.equal(await page.locator('.donut-center strong').innerText(),'7');
     for(const state of states) assert.equal(await page.locator(`[data-status="${state}"] b`).innerText(),'1');
@@ -557,11 +559,90 @@ test('Vue drill-down, search, identity error, mobile and reduced motion work aga
     assert.match(await page.locator('.status-insight').innerText(),/1.*pagu.*1.*sinkron/i);
     await page.getByRole('searchbox').fill('tidak-ada-xyz');
     assert.equal(await page.locator('.donut-center strong').innerText(),'7','status follows PPK, not table search');
+    await page.getByRole('searchbox').fill('');
+    const missing = page.locator('.status-legend button[data-status="target-kosong"]');
+    await missing.click({timeout:2000});
+    assert.equal(await missing.getAttribute('aria-pressed'),'true');
+    assert.equal(await page.locator('.sub-row').count(),1,'filter opens parent and shows matching child only');
+    assert.match(await page.locator('.sub-row').innerText(),/Sub target-kosong/);
+    assert.equal(await page.locator('.donut-center strong').innerText(),'7');
+    await page.getByRole('searchbox').fill('tidak-ada-xyz');
+    assert.equal(await page.locator('.activity-row').count(),0,'search intersects status');
+    await page.getByRole('searchbox').fill('');
+    await missing.focus();await page.keyboard.press('Enter');
+    assert.equal(await missing.getAttribute('aria-pressed'),'false','keyboard toggles status off');
+    await page.locator('#status-chart').scrollIntoViewIfNeeded();
+    await page.evaluate(()=>{const chart=Chart.getChart('status-chart');const p=chart.getDatasetMeta(0).data[2].getCenterPoint();window.chartPoint=p;});
+    const statusBox=await page.locator('#status-chart').boundingBox();
+    const point=await page.evaluate(()=>window.chartPoint);
+    await page.mouse.click(statusBox.x+point.x,statusBox.y+point.y);
+    await page.waitForFunction(()=>document.querySelector('.status-legend [data-status="lebih"]').getAttribute('aria-pressed')==='true');
+    assert.equal(await page.locator('.sub-row').count(),1);
+    assert.match(await page.locator('.sub-row').innerText(),/Sub lebih/);
+    await page.getByRole('button',{name:'Hapus filter status',exact:true}).click();
+    await page.locator('#filter-status').selectOption('nihil');
+    assert.match(await page.locator('.sub-row').innerText(),/Sub nihil/);
+    await page.locator('#filter-ppk').selectOption('siti');
+    assert.match(await page.locator('.sub-row').innerText(),/Sub nihil/,'PPK preserves status');
+    await page.getByRole('button',{name:'Hapus filter status',exact:true}).click();
+    await page.locator('#ppk-chart').scrollIntoViewIfNeeded();
+    const ppkPoint=await page.evaluate(()=>Chart.getChart('ppk-chart').getDatasetMeta(0).data[0].getCenterPoint());
+    const ppkBox=await page.locator('#ppk-chart').boundingBox();
+    await page.mouse.click(ppkBox.x+ppkPoint.x,ppkBox.y+ppkPoint.y);
+    await page.waitForFunction(()=>document.querySelector('#filter-ppk').value==='');
     view.ppks[0].activities=[];
     await page.reload();await page.waitForSelector('.status-insight');
     assert.match(await page.locator('.status-insight').innerText(),/Belum ada subkegiatan aktif/);
     assert.deepEqual(errors, []);
-  } finally { await browser.close(); await new Promise(r => server.close(r)); }
+  } finally { await browser.close(); server.closeAllConnections(); await new Promise(r => server.close(r)); }
+});
+
+test('sync toast follows requested PPK and never confirms unread results', async () => {
+  const { chromium } = require('playwright');
+  const root = path.resolve(__dirname, '..');
+  const view = { ...model([target('siti'),target('agus')],[snapshot('siti',[pkg()])]), token:'fixture', jobs:{} };
+  const browser = await chromium.launch({channel:'chrome',headless:true});
+  const page = await browser.newPage({reducedMotion:'reduce'});
+  let failLoad = false;
+  const assets = {'/':'public/index.html','/app.js':'public/app.js','/style.css':'public/style.css','/vendor/vue.js':'node_modules/vue/dist/vue.global.prod.js','/vendor/chart.js':'node_modules/chart.js/dist/chart.umd.js','/logo.png':'logo.png','/favicon.png':'favicon.png'};
+  await page.route('http://dashboard.local/**', route => {
+    const url = new URL(route.request().url());
+    if (url.pathname === '/api/data') return route.fulfill({status:failLoad?503:200,json:failLoad?{}:view});
+    if (url.pathname === '/api/sync/siti') return route.fulfill({status:202,json:view.jobs.siti});
+    const file = assets[url.pathname];
+    return file ? route.fulfill({path:path.join(root,file),contentType:file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.html')?'text/html':'image/png'}) : route.abort();
+  });
+  try {
+    await page.goto('http://dashboard.local/');
+    await page.waitForSelector('.ppk-card');
+    view.jobs = { agus:{running:false,error:'Error lama PPK lain'}, siti:{running:false,error:null,phase:'Selesai'} };
+    await page.getByRole('button',{name:'Sinkronisasi',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('.toast-box')?.textContent.includes('berhasil'),null,{timeout:5000});
+    assert.equal(await page.locator('.toast-box.error').count(),0);
+    assert.match(await page.locator('.toast-box').innerText(),/Siti Syamsinur/);
+    view.jobs.siti = {running:true,error:null,phase:'Membaca detail',done:1,total:2};
+    await page.getByRole('button',{name:'Sinkronisasi',exact:true}).click();
+    await page.waitForSelector('.sync-notice');
+    await page.waitForFunction(()=>!document.querySelector('.toast-box'));
+    view.jobs.siti = {running:false,error:'Sesi PPK terpilih kedaluwarsa',phase:'Gagal'};
+    await page.waitForSelector('.toast-box.error');
+    assert.match(await page.locator('.toast-box').innerText(),/Sesi PPK terpilih kedaluwarsa/);
+    view.jobs.siti = {running:false,error:null,phase:'Selesai'};
+    failLoad = true;
+    await page.getByRole('button',{name:'Sinkronisasi',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('.toast-box.error')?.textContent.includes('dikonfirmasi'),null,{timeout:5000});
+    assert.doesNotMatch(await page.locator('.toast-box').innerText(),/berhasil/);
+    failLoad = false;
+    await page.getByRole('button',{name:'Sinkronisasi',exact:true}).click();
+    delete view.jobs.siti;
+    await page.waitForFunction(()=>document.querySelector('.toast-box.error')?.textContent.includes('dikonfirmasi'),null,{timeout:5000});
+    assert.doesNotMatch(await page.locator('.toast-box').innerText(),/berhasil/);
+    view.jobs.siti = {running:true,error:null,phase:'Memeriksa ulang',done:2,total:2};
+    await page.reload();await page.waitForSelector('.sync-notice');
+    view.jobs.siti = {running:false,error:null,phase:'Selesai'};
+    await page.waitForFunction(()=>document.querySelector('.toast-box')?.textContent.includes('berhasil'),null,{timeout:5000});
+    assert.equal(await page.locator('.toast-box.error').count(),0,'reload follows running PPK, not old errors');
+  } finally { await browser.close(); }
 });
 
 test('SPSE credentials stay private, select only the requested PPK, and autofill without submitting', async () => {
@@ -658,6 +739,14 @@ test('table PNG exports only the hierarchy and preserves selected expansion and 
     }
     await exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',ppk:'siti',query:'tidak-ada',opened:[activityKey,subKey]});
     assert.equal(captures.at(-1).activities,0);
+    await exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',ppk:'siti',status:'sesuai',opened:[activityKey,subKey]});
+    assert.equal(captures.at(-1).subs,1,'status filter keeps matching child and auto-expanded parent');
+    assert.equal(captures.at(-1).packages,1);
+    await exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',ppk:'siti',status:'sesuai',opened:[]});
+    assert.equal(captures.at(-1).subs,0,'export preserves parent manually collapsed under status filter');
+    await exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',ppk:'siti',status:'target-kosong'});
+    assert.equal(captures.at(-1).activities,0,'export applies status filter');
+    for (const status of ['bad',null,{},42]) await assert.rejects(exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',status}),/tidak valid/);
     for (const opened of ['bad',[42],['x'.repeat(201)],Array(4001).fill(activityKey)]) {
       await assert.rejects(exportPng(path.resolve(__dirname,'..'),view,{section:'rekap',opened}),/tidak valid/);
     }
