@@ -1,5 +1,17 @@
 # Bukti implementasi dan verifikasi
 
+## Pengisian password login bertahap — 26 November 2026
+
+- Koreksi setelah pengguna menyebut URL aktual: tahap password berada di `/jabarprov/loginpass`, yang sebelumnya ditolak pemeriksaan path. Keempat pemeriksaan halaman/form/pengamat kini mengizinkan `/login` dan `/loginpass` pada origin SPSE yang sama, tetap menolak prefix lain dan tujuan eksternal.
+- Regresi `/loginpass`: tes terarah gagal dengan `false !== true` sebelum perbaikan, kemudian lulus. Fixture menguji pengisian langsung dan otomatis setelah navigasi, penolakan `/loginpass-other`, serta penolakan tujuan form eksternal. `npm test` setelah koreksi: 25 lulus. Perbaikan sebelumnya untuk perubahan DOM saja belum cukup mengatasi URL aktual.
+- Keluhan pengguna: password tidak terisi setelah menekan Hubungkan. Credential untuk keenam ID PPK terbaca; nilainya tidak ditampilkan. Pengisian sebelumnya hanya mengikuti `DOMContentLoaded`, sehingga kolom password yang ditambahkan atau ditampilkan kemudian tidak terisi.
+- RED: `node --test --test-name-pattern='SPSE credentials' test/selfcheck.js` gagal pada penantian password selama 3 detik setelah tombol fixture menambahkan kolom tanpa navigasi. GREEN: perintah yang sama lulus setelah pemasangan pengamat perubahan form sebelum navigasi.
+- Pengamat meminta pengisian ulang saat struktur atau atribut form berubah. Pengisian tetap memeriksa origin/path halaman dan tujuan form, hanya dari frame utama. Nilai yang sudah cocok tidak mengirim event berulang. Tidak ada klik Login, pengiriman form, atau penanganan CAPTCHA/OTP otomatis.
+- Tes fixture mencakup kolom password baru, kolom tersembunyi yang kemudian ditampilkan, tujuan form eksternal yang ditolak, pemilihan PPK, izin file, dan tidak adanya rahasia dalam pesan koneksi.
+- Verifikasi: `node --test --experimental-test-coverage test/selfcheck.js`, 25 lulus; coverage gabungan server 90,97% baris, 92,36% cabang, 86,82% fungsi. Isi fungsi yang dieksekusi Playwright diuji melalui browser, bukan diukur oleh coverage Node.
+- Server direstart melalui SIGTERM setelah persetujuan pengguna dan pemeriksaan tidak ada sinkronisasi berjalan. Smoke server baru: enam kartu PPK tampil tanpa page error.
+- Batas: pemeriksaan SPSE menggunakan browser baru diblokir halaman keamanan situs. Penyebab pada sesi pengguna belum diverifikasi langsung. Tidak ada login atau sinkronisasi nyata, perubahan credential/snapshot, commit, atau push.
+
 ## Toast sinkronisasi dan filter grafik — 25 November 2026
 
 - Akar masalah toast: polling memilih error dari seluruh job, termasuk error lama PPK lain. Polling sekarang mengikuti PPK yang memulai sinkronisasi; sukses hanya tampil setelah pembacaan data terbaru berhasil dan job berfase `Selesai` tanpa error. Hasil yang tidak terbaca atau job yang hilang tidak dianggap sukses.

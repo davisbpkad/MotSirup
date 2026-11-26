@@ -27,7 +27,7 @@ async function connect(root, ppk) {
   const configured = !!readCredential(root, ppk.id);
   const context = await contextFor(root, ppk);
   const page = context.pages()[0] || await context.newPage();
-  watchSpse(page, root, ppk.id);
+  await watchSpse(page, root, ppk.id);
   await page.goto(SPSE, { waitUntil: 'domcontentloaded', timeout: 30000 });
   await autofillSpse(page, root, ppk.id);
   await page.bringToFront();

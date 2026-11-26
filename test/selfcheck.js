@@ -646,7 +646,7 @@ test('sync toast follows requested PPK and never confirms unread results', async
 });
 
 test('SPSE credentials stay private, select only the requested PPK, and autofill without submitting', async () => {
-  const { readCredential, autofillSpse } = require('../server/login');
+  const { readCredential, autofillSpse, watchSpse } = require('../server/login');
   const { chromium } = require('playwright');
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'sirup-login-'));
   const file=path.join(root,'credential.md');
@@ -671,12 +671,42 @@ test('SPSE credentials stay private, select only the requested PPK, and autofill
     await page.locator('[name=txtUserId]').fill('');
     assert.equal(await autofillSpse(page,root,'siti'),true);
     assert.equal(await page.locator('[name=txtUserId]').inputValue(),'fixture-user');
+    await page.route('**/jabarprov/loginpass',route=>route.fulfill({contentType:'text/html',body:'<form action="/jabarprov/loginpass" method="post"><input name="txtPassword" type="password"><button>Login</button></form>'}));
+    await page.goto('https://spse.inaproc.id/jabarprov/loginpass');
+    assert.equal(await autofillSpse(page,root,'siti'),true,'password step is an allowed login page');
+    assert.equal(await page.locator('[type=password]').inputValue(),'fixture-password');
+    await page.goto('https://spse.inaproc.id/jabarprov/loginpass-other');
+    assert.equal(await autofillSpse(page,root,'siti'),false,'unrelated login prefix stays blocked');
+    assert.equal(await page.locator('[type=password]').inputValue(),'');
     await page.goto('https://example.org/jabarprov/login');
     assert.equal(await autofillSpse(page,root,'siti'),false);
     assert.equal(await page.locator('[type=password]').inputValue(),'');
     await page.goto('https://spse.inaproc.id/jabarprov/paket');
     assert.equal(await autofillSpse(page,root,'siti'),false);
     assert.equal(await page.locator('[type=password]').inputValue(),'');
+    const staged=await browser.newPage();
+    await watchSpse(staged,root,'siti');
+    await staged.route('**/*',route=>route.fulfill({contentType:'text/html',body:'<form action="/jabarprov/login" method="post"><input name="txtUserId"><button type="button" onclick="this.insertAdjacentHTML(\'beforebegin\',\'<input type=password>\')">Lanjut</button></form>'}));
+    await staged.goto('https://spse.inaproc.id/jabarprov/login');
+    await staged.waitForFunction(()=>document.querySelector('[name=txtUserId]').value==='fixture-user');
+    await staged.getByRole('button',{name:'Lanjut'}).click();
+    await staged.waitForFunction(()=>document.querySelector('[type=password]').value==='fixture-password',null,{timeout:3000});
+    await staged.locator('form').evaluate(form=>{
+      form.action='https://example.org/steal';
+      form.querySelector('[type=password]').remove();
+      form.insertAdjacentHTML('beforeend','<input type=password>');
+    });
+    await staged.waitForTimeout(300);
+    assert.equal(await staged.locator('[type=password]').inputValue(),'','dynamic form cannot send credentials elsewhere');
+    await staged.locator('form').evaluate(form=>{
+      form.action='/jabarprov/login';
+      form.querySelector('[type=password]').hidden=true;
+    });
+    await staged.waitForTimeout(300);
+    assert.equal(await staged.locator('[type=password]').inputValue(),'','hidden password stays empty');
+    await staged.locator('[type=password]').evaluate(input=>input.hidden=false);
+    await staged.waitForFunction(()=>document.querySelector('[type=password]').value==='fixture-password');
+    await staged.close();
     const originalPersistent=chromium.launchPersistentContext;
     const context=await browser.newContext();
     await context.route('**/*',route=>route.fulfill({contentType:'text/html',body:route.request().url().endsWith('/login')?'<form action="/jabarprov/login"><input name="txtUserId"><input type="password"></form>':'<h1>SPSE</h1>'}));
@@ -689,6 +719,15 @@ test('SPSE credentials stay private, select only the requested PPK, and autofill
       await loginPage.goto('https://spse.inaproc.id/jabarprov/login');
       await loginPage.waitForFunction(()=>document.querySelector('[name=txtUserId]').value==='fixture-user');
       assert.equal(await loginPage.locator('[type=password]').inputValue(),'fixture-password');
+      await loginPage.route('**/jabarprov/loginpass',route=>route.fulfill({contentType:'text/html',body:'<form action="/jabarprov/loginpass" method="post"><input name="txtPassword" type="password"><button>Login</button></form>'}));
+      await loginPage.goto('https://spse.inaproc.id/jabarprov/loginpass');
+      await loginPage.waitForFunction(()=>document.querySelector('[type=password]').value==='fixture-password',null,{timeout:3000});
+      await loginPage.locator('form').evaluate(form=>{
+        form.action='https://example.org/steal';
+        form.querySelector('[type=password]').value='';
+      });
+      assert.equal(await autofillSpse(loginPage,root,'siti'),false);
+      assert.equal(await loginPage.locator('[type=password]').inputValue(),'');
     } finally {chromium.launchPersistentContext=originalPersistent;await context.close();}
     await page.goto('https://spse.inaproc.id/jabarprov/login');
     await page.locator('form').evaluate(el=>el.action='https://example.org/steal');

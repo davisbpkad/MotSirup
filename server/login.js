@@ -26,32 +26,47 @@ function readCredential(root, ppk) {
 
 async function autofillSpse(page, root, ppk) {
   const url = new URL(page.url());
-  if (url.origin !== 'https://spse.inaproc.id' || !/^\/jabarprov\/login(?:\/|$)/.test(url.pathname)) return false;
+  if (url.origin !== 'https://spse.inaproc.id' || !/^\/jabarprov\/login(?:pass)?(?:\/|$)/.test(url.pathname)) return false;
   const credential = readCredential(root, ppk);
   if (!credential) return false;
   try {
     // Recheck the document and form destination atomically before exposing credentials to a page.
     return await page.evaluate(account => {
-      if (location.origin !== 'https://spse.inaproc.id' || !/^\/jabarprov\/login(?:\/|$)/.test(location.pathname)) return false;
+      if (location.origin !== 'https://spse.inaproc.id' || !/^\/jabarprov\/login(?:pass)?(?:\/|$)/.test(location.pathname)) return false;
       let filled = false;
       for (const input of document.querySelectorAll('input[name="txtUserId"], input[type="password"]')) {
         const form = input.form;
         if (!form || input.disabled || input.readOnly || !input.getClientRects().length) continue;
         const action = new URL(form.action, location.href);
-        if (action.origin !== location.origin || !/^\/jabarprov\/login(?:\/|$)/.test(action.pathname)) continue;
+        if (action.origin !== location.origin || !/^\/jabarprov\/login(?:pass)?(?:\/|$)/.test(action.pathname)) continue;
         const value = input.type === 'password' ? account.password : account.username;
+        filled = true;
+        if (input.value === value) continue;
         Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, value);
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
-        filled = true;
       }
       return filled;
     }, credential);
   } catch { throw Error('Pengisian otomatis SPSE gagal. Isi form secara manual.'); }
 }
 
-function watchSpse(page, root, ppk) {
+async function watchSpse(page, root, ppk) {
   if (watched.has(page)) return;
+  await page.exposeBinding('__sirupAutofill', async source => {
+    if (source.frame === page.mainFrame()) await autofillSpse(page, root, ppk).catch(() => {});
+  });
+  await page.addInitScript(() => {
+    if (location.origin !== 'https://spse.inaproc.id' || !/^\/jabarprov\/login(?:pass)?(?:\/|$)/.test(location.pathname)) return;
+    let timer;
+    // Login can reveal the password field without loading another document.
+    const observer = new MutationObserver(() => {
+      clearTimeout(timer);
+      timer = setTimeout(() => window.__sirupAutofill().catch(() => {}), 100);
+    });
+    observer.observe(document, { childList: true, subtree: true, attributes: true,
+      attributeFilter: ['type', 'name', 'style', 'class', 'hidden', 'disabled', 'readonly', 'action'] });
+  });
   watched.add(page);
   // Each user-driven login step gets its own fill. Never click Next/Login or submit a form.
   page.on('domcontentloaded', () => autofillSpse(page, root, ppk).catch(() => {}));
